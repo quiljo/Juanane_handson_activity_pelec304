@@ -1,0 +1,66 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}ADDRESS{% endblock %}
+
+{% block content %}
+
+<style>
+    .container {
+        max-width: 900px;
+        margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .address {
+        background: white;
+        width: 260px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-left: 6px solid #ff8cbc;
+        transition: 0.3s;
+    }
+
+    .address:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+        text-align: center;
+        color: #ff6ba5;
+        margin-top: 20px;
+    }
+
+    .address h1 {
+        font-size: 20px;
+        color: #ff6ba5;
+        margin-bottom: 10px;
+    }
+
+    .address p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #444;
+    }
+</style>
+
+<h2>ADDRESS:</h2>
+
+<div class="container">
+    {% for x in form %}
+    <div class="address">
+        <h1>Address {{ forloop.counter }}</h1>
+        <p><strong>Province:</strong> {{ x.province }}</p>
+        <p><strong>Municipality:</strong> {{ x.municipality }}</p>
+        <p><strong>Brgy:</strong> {{ x.brgy }}</p>
+        <p><strong>Street:</strong> {{ x.street }}</p>
+        <p><strong>Postal Code:</strong> {{ x.postal_code }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'dashboard.html' %}
+
+{% block title %}STUDENT FAMILY{% endblock %}
+
+{% block content %}
+
+<style>
+    .container {
+        max-width: 900px;
+        margin: 20px auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .student_fam {
+        background: white;
+        width: 260px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-left: 6px solid #ff8cbc;
+        transition: 0.3s;
+    }
+
+    .student_fam:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+        text-align: center;
+        color: #ff6ba5;
+        margin-top: 20px;
+    }
+
+    .student_fam h1 {
+        font-size: 20px;
+        color: #ff6ba5;
+        margin-bottom: 10px;
+    }
+
+    .student_fam p {
+        margin: 4px 0;
+        font-size: 14px;
+        color: #444;
+    }
+</style>
+
+<h2>STUDENT FAMILY:</h2>
+
+<div class="container">
+    {% for x in form %}
+    <div class="student_fam">
+        <h1>Student Family {{ forloop.counter }}</h1>
+        <p><strong>Guardian:</strong> {{ x.guardian }}</p>
+        <p><strong>Occupation:</strong> {{ x.occupation }}</p>
+        <p><strong>Contact Number:</strong> {{ x.contact_no }}</p>
+        <p><strong>Annual Income:</strong> {{ x.annual_inc }}</p>
+        <p><strong>Citizenship:</strong> {{ x.citizenship }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

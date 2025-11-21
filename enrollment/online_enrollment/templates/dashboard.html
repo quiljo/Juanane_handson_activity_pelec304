@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{%endblock%}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffeef5;
+            color: #333;
+        }
+
+        nav {
+            background: #ffb6d6;
+            padding: 12px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 6px 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background: #ff8cbc;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        form button {
+            background: #ff8cbc;
+            border: none;
+            padding: 10px 18px;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        form button:hover {
+            background: #ff6ba5;
+        }
+
+        a[href*="logout"] {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            color: #ff6ba5;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        a[href*="logout"]:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="{% url 'student_acc' %}"> Student Account</a>
+            <a href="{% url 'student' %}"> Student</a>  
+            <a href="{% url 'school' %}"> School</a>
+            <a href="{% url 'stud_fam' %}"> Family</a>
+            <a href="{% url 'address' %}"> Address</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        {%block content%}
+        {%endblock%}
+    </div>
+
+    <form method='POST'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="{% url 'logout_user' %}"> Logout</a>
+
+</body>
+</html>
